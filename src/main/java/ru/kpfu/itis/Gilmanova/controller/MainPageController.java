@@ -1,4 +1,4 @@
-package ru.kpfu.itis.Gilmanova.controllers;
+package ru.kpfu.itis.Gilmanova.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
