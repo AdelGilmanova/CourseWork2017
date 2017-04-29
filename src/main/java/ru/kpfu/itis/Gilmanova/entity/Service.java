@@ -21,4 +21,8 @@ public class Service {
 
     @Column
     private Integer price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "section", referencedColumnName = "id", nullable = false)
+    private Section section;
 }

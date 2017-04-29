@@ -23,6 +23,9 @@ public class Schedule {
     @Column
     private String room;
 
+    @Column
+    private Boolean status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor", referencedColumnName = "id", nullable = false)
     private Doctor doctor;
@@ -68,5 +71,13 @@ public class Schedule {
 
     public void setFinish(Time finish) {
         this.finish = finish;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }
