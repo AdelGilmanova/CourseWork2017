@@ -13,6 +13,47 @@ public class MainPageController {
 
     @RequestMapping(value = MAIN_PAGE_MAPPING, method = RequestMethod.GET)
     public String renderMainPage() {
-        return "mainPage";
+        return "main";
     }
+
+    @RequestMapping(value = "/services", method = RequestMethod.GET)
+    public String renderServicesPage() {
+        return "services";
+    }
+
+    @RequestMapping(value = "/sections", method = RequestMethod.GET)
+    public String renderSectionsPage() {
+        return "sections";
+    }
+
+    @RequestMapping(value = "/patient", method = RequestMethod.GET)
+    public String renderPatientPage() {
+        return "patient";
+    }
+
+    @RequestMapping(value = "/doctor", method = RequestMethod.GET)
+    public String renderDoctorPage() {
+        return "doctor";
+    }
+
+    @RequestMapping(value = "/clinicalExamination", method = RequestMethod.GET)
+    public String renderClinicalExaminationPage() {
+        return "clinicalExamination";
+    }
+
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public String renderSchedulePage() {
+        return "schedule";
+    }
+
+    @RequestMapping(value = "/appointment", method = RequestMethod.GET)
+    public String renderAppointmentPage() {
+        return "appointment";
+    }
+
+    @RequestMapping(value = "/cardForm", method = RequestMethod.GET)
+    public String rendercardFormPage() {
+        return "cardForm";
+    }
+
 }

@@ -27,6 +27,12 @@ public class Patient {
     @Column
     private String allergy;
 
+    @Column
+    private Integer card_number;
+
+    @Column
+    private String  gender;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserInfo userInfo;
@@ -105,5 +111,21 @@ public class Patient {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Integer getCard_number() {
+        return card_number;
+    }
+
+    public void setCard_number(Integer card_number) {
+        this.card_number = card_number;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

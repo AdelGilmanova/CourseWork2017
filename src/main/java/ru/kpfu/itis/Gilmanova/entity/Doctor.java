@@ -24,6 +24,9 @@ public class Doctor {
     @Column
     private String specialization;
 
+    @Column
+    private String  gender;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserInfo userInfo;
@@ -91,5 +94,13 @@ public class Doctor {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

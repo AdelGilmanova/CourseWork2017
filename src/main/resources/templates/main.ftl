@@ -1,22 +1,37 @@
-<#include "templates/mainTemplate.ftl">
-<@main_template title="����� ����������"/>
+<#include "temp/mainTemplate.ftl">
+<@main_template title="Система учета пациентов"/>
 
 <#macro body>
+
+<div class="headerPic">
+    <div class="pics">
+        <div class="pic1">
+            &nbsp;<span>Новые</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;разработки<br/><br/><br/><br/>
+        </div>
+        <div class="pic2">
+            &nbsp;<span>Лучшие</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;технологии<br/><br/><br/><br/>
+        </div>
+        <div class="pic3">
+            &nbsp;<span>Инновационные</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;исследования<br/><br/><br/><br/>
+        </div>
+    </div>
+</div>
+
 <div class="allContent">
 
     <div id="sidebar1">
         <div class="loginTitle">
-            <div class="lT">����</div>
+            <div class="lT">Вход</div>
         </div>
         <div class="loginBody">
             <br/>
-            �����:<br/>
+            Логин:<br/>
             <input name="" type="text" size="28"/><br/><br/>
-            ������:<br/>
+            Пароль:<br/>
             <input name="" type="text" size="28"/><br/><br/>
 
             <div class="ls">
-                <button class="btn btn-primary btn-block" type="submit">�����</button>
+                <button class="btn btn-primary btn-block" type="submit">Войти</button>
             </div>
         </div>
         <div class="loginFooter"></div>

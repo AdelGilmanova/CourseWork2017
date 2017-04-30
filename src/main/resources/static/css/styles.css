@@ -6,7 +6,11 @@ body  {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#505a5d;
-	background: #FFF url(images/templateBackground.jpg) repeat-x left top;
+	background: #FFF url(/images/templateBackground.jpg) repeat-x left top;
+	height: 100%;
+}
+html {
+	height: 100%;
 }
 h1 {
 	color:#2f9dea;
@@ -21,9 +25,11 @@ a:hover {
 	text-decoration:underline;
 }
 #container { 
-	width: 980px;  
+	width: 980px;
 	margin: 0 auto;
 	background:#ffffff;
+	display: table;
+	height: 100%;
 } 
 #header { 
 
@@ -31,7 +37,6 @@ a:hover {
 .headerTop {
 }
 .logo {
-	float:left;
 	color:#00b0e4;
 	font-size:48px;
 	padding:10px 0 0 20px;
@@ -60,7 +65,7 @@ a:hover {
 }
 .mainMenu {
 	margin-top:10px;
-	background:url(images/menuBackground.jpg) repeat-x left top;
+	background:url(/images/menuBackground.jpg) repeat-x left top;
 	height:54px;
 	text-align:center;
 }
@@ -71,7 +76,7 @@ a:hover {
 .mainMenu li {
 	list-style:none;
 	display:inline;
-	padding:60px;
+	padding: 0 60px;
 }
 .mainMenu a {
 	font-size:18px;
@@ -89,7 +94,7 @@ a:hover {
 	text-decoration:none;
 }
 .headerPic {
-	background:url(images/headerBackground.jpg) no-repeat left top;
+	background:url(/images/headerBackground.jpg) no-repeat left top;
 	height:317px;
 	margin-bottom:230px;
 }
@@ -102,7 +107,7 @@ a:hover {
 	height:246px;
 	float:left;
 	margin:0 10px 0 35px;
-	background:url(images/b1.jpg) no-repeat left top;
+	background:url(/images/b1.jpg) no-repeat left top;
 	color:#ffffff;
 	font-size:36px;
 }
@@ -119,7 +124,7 @@ a:hover {
 	height:246px;
 	float:left;
 	margin:0 10px;
-	background:url(images/b2.jpg) no-repeat left top;
+	background:url(/images/b2.jpg) no-repeat left top;
 	color:#ffffff;
 	font-size:36px;
 }
@@ -128,12 +133,14 @@ a:hover {
 	height:246px;
 	float:left;
 	margin:0 10px;
-	background:url(images/b3.jpg) no-repeat left top;
+	background:url(/images/b3.jpg) no-repeat left top;
 	color:#ffffff;
 	font-size:36px;
 }
 .allContent {
 	margin:0 20px;
+	display: table-row;
+	height: 100%;
 }
 #sidebar1 {
 	float: left; 
@@ -143,7 +150,7 @@ input {
 	border:1px solid #b0b8c7;
 }
 .loginTitle {
-	background:url(images/loginTitle.jpg) no-repeat left top;
+	background:url(/images/loginTitle.jpg) no-repeat left top;
 	height:46px;
 	width:269px;
 	color:#ffffff;
@@ -168,7 +175,7 @@ input {
 	border:0;
 }
 .loginFooter {
-	background:url(images/loginBottom.jpg) no-repeat left top;
+	background:url(/images/loginBottom.jpg) no-repeat left top;
 	height:21px;
 	width:269px;
 }
@@ -180,12 +187,70 @@ input {
 	height:85px;
 	text-align:center;
 	padding-top:30px;
-	background:url(images/footer.jpg) repeat-x left top;
+	background:url(/images/footer.jpg) repeat-x left top;
 	margin-top:20px;
-} 
+	font-size: 11px;
+}
 .clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
 	clear:both;
     height:0;
     font-size: 1px;
-    line-height: 0px;
+    line-height: 0;
+}
+
+.mainPageInf{
+	color:#2f9dea;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.mainPageInf2{
+	font-size: 12px;
+}
+/*************Страница услуг**************/
+.page-header{
+	text-align: center;
+	color:#2f9dea;
+}
+
+.section{
+	padding: 0 50px;
+}
+/*************Личный кабинет пациента**************/
+.patient-inf{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	width: 100%;
+	padding: 0 50px;
+}
+
+.photo {
+	position: absolute;
+	margin-top: 100px;
+	right: 100px;
+}
+
+.card{
+	padding: 0 50px;
+}
+.table-inf{
+	/*margin: 0 20px;*/
+	width: 950px;
+}
+
+/*************Диспансеризация**************/
+.disp{
+	padding: 0 50px;
+	text-align: justify;
+}
+.li{
+	list-style:none;
+}
+span .bold{
+	font-weight: bold;
+}
+
+.columns {
+	column-count: 2;
 }

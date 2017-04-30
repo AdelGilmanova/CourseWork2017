@@ -1,6 +1,7 @@
 package ru.kpfu.itis.Gilmanova.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -13,6 +14,9 @@ public class Schedule {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column
+    private Date day;
 
     @Column
     private Time start;
@@ -79,5 +83,13 @@ public class Schedule {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public Date getDay() {
+        return day;
+    }
+
+    public void setDay(Date day) {
+        this.day = day;
     }
 }
