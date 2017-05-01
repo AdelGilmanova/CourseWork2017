@@ -24,22 +24,31 @@
             <div class="lT">Вход</div>
         </div>
         <div class="loginBody">
-            <br/>
-            Логин:<br/>
-            <input name="" type="text" size="28"/><br/><br/>
-            Пароль:<br/>
-            <input name="" type="text" size="28"/><br/><br/>
+            <form method="post" action="/login">
+                <br/>
+                Логин:<br/>
+                <input name="username" type="text" size="28"/><br/><br/>
+                Пароль:<br/>
+                <input name="password" type="password" size="28"/><br/><br/>
+                <#if error?? && error?has_content>
+                    <div style="text-align: right;color: red; font-size: 13px"><i>Неверный логин или пароль.</i>
+                    </div>
+                </#if>
+                <div class="ls">
+                    <button class="btn btn-primary btn-block" type="submit">Войти</button>
+                </div>
+            </form>
 
-            <div class="ls">
-                <button class="btn btn-primary btn-block" type="submit">Войти</button>
-            </div>
         </div>
         <div class="loginFooter"></div>
     </div>
 
     <div id="mainContent">
         <p class="mainPageInf">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae ligula nunc.</p>
-
+        <#if error??>
+            <div style="text-align: right;color: red; font-size: 13px"><i>Неверный логин или пароль.</i>
+            </div>
+        </#if>
         <p class="mainPageInf2">
             Ut eu finibus felis. Donec eu odio augue. Suspendisse sodales sapien nec sapien sagittis, a gravida
             augue maximus. Etiam quis est semper, convallis tortor quis, sodales odio. In in vulputate eros, lacinia

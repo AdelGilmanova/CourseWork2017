@@ -1,7 +1,7 @@
 <div id="header">
     <div class="headerTop">
         <div class="logo">
-            <a href="/"><img src="/images/logo.png" alt="" width="179" height="77"/></a>SRP
+            <a href="/logout"><img src="/images/logo.png" alt="" width="179" height="77"/></a>SRP
             <span>качественное лечение</span>
         </div>
     </div>

@@ -42,10 +42,6 @@ public class Patient {
             mappedBy = "patient")
     private List<SickCard> sickCard;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
     public Patient() {
     }
 
@@ -103,14 +99,6 @@ public class Patient {
 
     public void setSickCard(List<SickCard> sickCard) {
         this.sickCard = sickCard;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public Integer getCard_number() {

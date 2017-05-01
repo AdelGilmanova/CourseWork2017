@@ -33,8 +33,8 @@ public class Address {
     private String area;
 
     @OneToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    @JoinColumn(name = "user_id")
+    private UserInfo userInfo;
 
     public Address() {
     }
@@ -67,11 +67,39 @@ public class Address {
         return area;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setHouse(String house) {
+        this.house = house;
+    }
+
+    public void setFlat(Integer flat) {
+        this.flat = flat;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 }

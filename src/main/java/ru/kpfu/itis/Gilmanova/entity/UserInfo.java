@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Adel on 28.04.2017.
  */
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "login"))
 public class UserInfo {
     @Id
     @Column(name = "id")
@@ -24,15 +24,16 @@ public class UserInfo {
     private String secondName;
 
     @Column
-    private String email;
+    private String login;
 
     @Column
     private String hashPass;
 
-    @OneToMany(cascade = CascadeType.REFRESH,
-            fetch = FetchType.LAZY,
-            mappedBy = "userInfo")
-    private List<UserRoles> userRoles;
+    @Column
+    private String role;
+
+    @Column
+    private Boolean enabled;
 
     public UserInfo() {
     }
@@ -69,14 +70,6 @@ public class UserInfo {
         this.secondName = secondName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getHashPass() {
         return hashPass;
     }
@@ -85,5 +78,28 @@ public class UserInfo {
         this.hashPass = hashPass;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }
 
