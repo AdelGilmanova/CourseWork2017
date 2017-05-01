@@ -2,7 +2,7 @@
     <div class="headerTop">
         <div class="logo">
             <a href="/logout"><img src="/images/logo.png" alt="" width="179" height="77"/></a>SRP
-            <span>качественное лечение</span>
+            <span>система учета пациентов</span>
         </div>
     </div>
     <div class="mainMenu">

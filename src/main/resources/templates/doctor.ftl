@@ -17,11 +17,12 @@
         <p>Логин: ${(user.getLogin())!}</p>
         <p>Специализация: ${(doctor.getSpecialization())!}</p>
 
-        <form method="post" action="/">
+        <form action="/cardForm" method="post">
             Номер карты пациента:<br>
             <input type="text" name="number">
-            <input type="button" value="найти">
+            <input type="submit" value="найти">
         </form>
+        <p style="color: red">${(msg)!}</p>
     </div>
 
 </div>

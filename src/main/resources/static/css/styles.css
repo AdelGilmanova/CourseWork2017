@@ -144,7 +144,8 @@ a:hover {
 }
 #sidebar1 {
 	float: left; 
-	width: 269px; 
+	width: 269px;
+	padding-left: 40px;
 }
 input {
 	border:1px solid #b0b8c7;
@@ -163,6 +164,7 @@ input {
 .loginBody {
 	background:#e7eded;
 	padding:0 20px;
+	width: 269px;
 }
 .fr{
 	float:left;
@@ -180,7 +182,7 @@ input {
 	width:269px;
 }
 #mainContent { 
-	margin: 0 0 0 269px;
+	margin: 0 0 0 300px;
 	padding:0 30px;
 } 
 #footer {

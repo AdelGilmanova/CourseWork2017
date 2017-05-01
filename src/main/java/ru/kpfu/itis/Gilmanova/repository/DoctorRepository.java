@@ -12,7 +12,7 @@ import ru.kpfu.itis.Gilmanova.entity.UserInfo;
  * Created by Adel on 30.04.2017.
  */
 @Repository
-public interface DoctorRepository extends CrudRepository<UserInfo, Long> {
+public interface DoctorRepository extends CrudRepository<Doctor, Long> {
     @Query("select d from Doctor d where d.userInfo.id =:userId")
     Doctor getDoctorByUserId(@Param("userId") Long userId);
 }

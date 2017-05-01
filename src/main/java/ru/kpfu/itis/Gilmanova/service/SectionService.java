@@ -20,4 +20,8 @@ public class SectionService {
     public List<Section> findAll() {
         return sectionRepository.findAll();
     }
+
+    public Section getSection(Long id) {
+        return sectionRepository.findOne(id);
+    }
 }

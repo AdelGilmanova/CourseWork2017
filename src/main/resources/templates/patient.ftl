@@ -30,16 +30,16 @@
 
     <div class="card">
         <h3 class="page-header">История болезней</h3>
-        <table class="table table-bordered">
-            <tr>
-                <td>Дата</td>
-                <td>Жалобы</td>
-                <td>Диагноз</td>
-                <td>Лечение</td>
-                <td>Результат</td>
-                <td>Лечащий врач</td>
-            </tr>
             <#if cards?has_content>
+            <table class="table table-bordered">
+                <tr>
+                    <td>Дата</td>
+                    <td>Жалобы</td>
+                    <td>Диагноз</td>
+                    <td>Лечение</td>
+                    <td>Результат</td>
+                    <td>Лечащий врач</td>
+                </tr>
                 <#list cards as card>
                     <tr>
                         <td>${(card.getStart())!}-${(card.getFinish())!}</td>
@@ -50,9 +50,9 @@
                         <td>${(card.getDoctor().getUserInfo().getLastName())!}</td>
                     </tr>
                 </#list>
+            </table>
             <#else>У вас пока нет записей в карте.
             </#if>
-        </table>
     </div>
 </div>
 </#macro>

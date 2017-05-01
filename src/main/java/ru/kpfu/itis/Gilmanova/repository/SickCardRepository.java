@@ -13,7 +13,10 @@ import java.util.List;
  * Created by Adel on 01.05.2017.
  */
 @Repository
-public interface SickCardRepository extends CrudRepository<UserInfo, Long> {
-    @Query("select s from SickCard s where s.patient.userInfo.id =:userId")
+public interface SickCardRepository extends CrudRepository<SickCard, Long> {
+    @Query("select s from SickCard s where s.patient.userInfo.id =:userId order by s.start desc")
     List<SickCard> getCardsByUserId(@Param("userId") Long userId);
+
+    @Query("select s from SickCard s where s.patient.id =:patientId and s.doctor.id =:doctorId order by s.start desc")
+    List<SickCard> getPatientCardsByDoctorId(@Param("patientId") Long patientId, @Param("doctorId") Long doctorId);
 }

@@ -18,4 +18,12 @@ public class SickCardService {
     public List<SickCard> getCardsByUserId(Long userId) {
         return sickCardRepository.getCardsByUserId(userId);
     }
+
+    public void addNote(SickCard sickCard) {
+        sickCardRepository.save(sickCard);
+    }
+
+    public List<SickCard> getPatientCardsByDoctorId(Long patientId, Long doctorId) {
+        return sickCardRepository.getPatientCardsByDoctorId(patientId, doctorId);
+    }
 }

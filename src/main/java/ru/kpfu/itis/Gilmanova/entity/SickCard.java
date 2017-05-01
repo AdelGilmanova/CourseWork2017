@@ -43,6 +43,16 @@ public class SickCard {
     public SickCard() {
     }
 
+    public SickCard(Date start, String diagnosis, String treatment, String complaints, String results, Patient patient, Doctor doctor) {
+        this.start = start;
+        this.diagnosis = diagnosis;
+        this.treatment = treatment;
+        this.complaints = complaints;
+        this.results = results;
+        this.patient = patient;
+        this.doctor = doctor;
+    }
+
     public Long getId() {
         return id;
     }
@@ -114,4 +124,5 @@ public class SickCard {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+
 }

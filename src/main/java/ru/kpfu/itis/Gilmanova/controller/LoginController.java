@@ -1,6 +1,7 @@
 package ru.kpfu.itis.Gilmanova.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController extends BaseController {
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String renderLoginPage(Boolean error) {
-        request.setAttribute("error", error);
+    public String renderLoginPage(Boolean error, ModelMap model) {
+        //request.setAttribute("error", error);
+        model.put("error", "Неверный логин или пароль.");
         return "main";
     }
 

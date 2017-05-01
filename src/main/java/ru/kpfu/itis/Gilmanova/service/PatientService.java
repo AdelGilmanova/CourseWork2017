@@ -16,4 +16,9 @@ public class PatientService {
     public Patient getPatientByUserId(Long id) {
         return patientRepository.getPatientByUserId(id);
     }
+
+
+    public Long getUserIdByNumberId(Integer number) {
+        return patientRepository.getUserIdByNumberId(number);
+    }
 }

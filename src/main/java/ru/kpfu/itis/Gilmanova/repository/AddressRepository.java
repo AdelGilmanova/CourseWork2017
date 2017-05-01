@@ -11,7 +11,7 @@ import ru.kpfu.itis.Gilmanova.entity.UserInfo;
  * Created by Adel on 01.05.2017.
  */
 @Repository
-public interface AddressRepository extends CrudRepository<UserInfo, Long> {
+public interface AddressRepository extends CrudRepository<Address, Long> {
     @Query("select a from Address a where a.userInfo.id =:userId")
     Address getAddressByUserId(@Param("userId") Long userId);
 }
