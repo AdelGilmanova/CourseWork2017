@@ -21,4 +21,19 @@ public class PatientService {
     public Long getUserIdByNumberId(Integer number) {
         return patientRepository.getUserIdByNumberId(number);
     }
+
+
+    public void addPatient(Patient patient) {
+        patientRepository.save(patient);
+    }
+
+    public String checkСardNumber(Integer cardNumber) {
+        Patient patient = patientRepository.getUserIdByCardNumberId(cardNumber);
+        if (patient != null){
+            return "ok";  //если существует возвращает ok
+        }
+        else {
+            return "no";
+        }
+    }
 }

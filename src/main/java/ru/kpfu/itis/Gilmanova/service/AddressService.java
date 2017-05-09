@@ -20,4 +20,8 @@ public class AddressService {
     public Address getAddressByUserId(Long userId) {
         return addressRepository.getAddressByUserId(userId);
     }
+
+    public void addAddress(Address address) {
+        addressRepository.save(address);
+    }
 }

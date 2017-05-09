@@ -26,4 +26,8 @@ public class SickCardService {
     public List<SickCard> getPatientCardsByDoctorId(Long patientId, Long doctorId) {
         return sickCardRepository.getPatientCardsByDoctorId(patientId, doctorId);
     }
+
+    public SickCard getCardByCardId(Long cardId) {
+        return sickCardRepository.getCardByCardId(cardId);
+    }
 }

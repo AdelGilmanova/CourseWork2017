@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Adel on 28.04.2017.
  */
 @Entity
-@Table
+@Table (uniqueConstraints = @UniqueConstraint(columnNames = "card_number"))
 public class Patient {
     @Id
     @Column(name = "id")
@@ -116,4 +116,6 @@ public class Patient {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+
 }

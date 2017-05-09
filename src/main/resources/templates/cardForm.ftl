@@ -55,7 +55,7 @@
                         <td>${(card.getDiagnosis())!}</td>
                         <td>${(card.getTreatment())!}</td>
                         <td>${(card.getResults())!}</td>
-                        <td><a href="/updateCard/${(card.getId())!}">Изменить</a></td>
+                        <td><a href="/updateCard/${(card.getId())!}/${(patient.getId())!}">Изменить</a></td>
                     </tr>
                 </#list>
             </table>

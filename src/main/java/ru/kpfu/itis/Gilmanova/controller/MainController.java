@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.kpfu.itis.Gilmanova.entity.Doctor;
 import ru.kpfu.itis.Gilmanova.entity.SickCard;
 import ru.kpfu.itis.Gilmanova.security.MyUserDetail;
-import ru.kpfu.itis.Gilmanova.service.*;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -24,21 +23,6 @@ import java.text.SimpleDateFormat;
 @Controller
 public class MainController extends BaseController {
     //private static final String MAIN_PAGE_MAPPING = "/";
-
-    @Autowired
-    private PatientService patientService;
-    @Autowired
-    private SickCardService sickCardService;
-    @Autowired
-    private AddressService addressService;
-    @Autowired
-    private DoctorService doctorService;
-    @Autowired
-    private SectionService sectionService;
-    @Autowired
-    private ServiceService serviceService;
-    @Autowired
-    private ScheduleService scheduleService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String renderMainPage() {
@@ -167,13 +151,52 @@ public class MainController extends BaseController {
         return "redirect:/cardForm";
     }
 
-//    @RequestMapping(value = "/updateCard/{id}", method = RequestMethod.GET)
-//    public String updateCard(@PathVariable("id") Long cardId) {
-//        return "redirect:/cardForm";
-//    }
+    @RequestMapping(value = "/updateCard/{cardId}/{patientId}", method = RequestMethod.GET)
+    public String updateCard(@PathVariable("cardId") Long cardId,
+                             @PathVariable("patientId") Long patientId,
+                             ModelMap model) {
+        Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetail user = (MyUserDetail) object;
+        model.put("patient", patientService.getPatientByUserId(patientId));
+        model.put("user", user.getUserInfo());
+        model.put("card", sickCardService.getCardByCardId(cardId));
+        return "changeCardForm";
+    }
+
+    @RequestMapping(value = "/updateNote", method = RequestMethod.POST)
+    public String updateNote(@RequestParam(required = false) String start,
+                             @RequestParam(required = false) String finish,
+                             @RequestParam(required = false) String complaint,
+                             @RequestParam(required = false) String diagnosis,
+                             @RequestParam(required = false) String treatment,
+                             @RequestParam(required = false) String results,
+                             @RequestParam(required = false) Long cardId,
+                             @RequestParam(required = false) Long patientId,
+                             RedirectAttributes redirectAttributes) throws ParseException {
+        Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        MyUserDetail user = (MyUserDetail) object;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date startDay = new Date(dateFormat.parse(start.replace('.', '/')).getTime());
+        Date finishDay = new Date(dateFormat.parse(finish.replace('.', '/')).getTime());
+        SickCard sickCard = sickCardService.getCardByCardId(cardId);
+        sickCard.setStart(startDay);
+        sickCard.setFinish(finishDay);
+        sickCard.setDiagnosis(diagnosis);
+        sickCard.setTreatment(treatment);
+        sickCard.setComplaints(complaint);
+        sickCard.setResults(results);
+        sickCard.setPatient(patientService.getPatientByUserId(patientId));
+        sickCard.setDoctor(doctorService.getDoctorByUserId(user.getUserInfo().getId()));
+        sickCardService.addNote(sickCard);
+        redirectAttributes.addFlashAttribute("msg", "Данные успешно изменены.");
+        redirectAttributes.addFlashAttribute("patient", patientService.getPatientByUserId(patientId));
+        redirectAttributes.addFlashAttribute("user", user.getUserInfo());
+        redirectAttributes.addFlashAttribute("cards", sickCardService.getCardsByUserId(patientId));
+        return "redirect:/cardForm";
+    }
 
     @RequestMapping(value = "/clinicalExamination", method = RequestMethod.GET)
-    public String renderClinicalExaminationPage() {
+         public String renderClinicalExaminationPage() {
         return "clinicalExamination";
     }
 
