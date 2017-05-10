@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.kpfu.itis.Gilmanova.entity.Address;
 import ru.kpfu.itis.Gilmanova.entity.Patient;
+import ru.kpfu.itis.Gilmanova.entity.Schedule;
 import ru.kpfu.itis.Gilmanova.entity.UserInfo;
 import ru.kpfu.itis.Gilmanova.security.MyUserDetail;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -27,7 +29,7 @@ public class AdminController extends BaseController {
         if (!object.equals("anonymousUser")) {
             MyUserDetail user = (MyUserDetail) object;
             String role = user.getUserInfo().getRole();
-            if (role.equals("ROLE_USER")) {
+            if (role.equals("ROLE_ADMIN")) {
                 return "admin";
             }
         }
@@ -40,7 +42,7 @@ public class AdminController extends BaseController {
         if (!object.equals("anonymousUser")) {
             MyUserDetail user = (MyUserDetail) object;
             String role = user.getUserInfo().getRole();
-            if (role.equals("ROLE_USER")) {
+            if (role.equals("ROLE_ADMIN")) {
                 return "cardAddition";
             }
         }
@@ -98,8 +100,10 @@ public class AdminController extends BaseController {
         patient.setUserInfo(user2);
         patientService.addPatient(patient);
 
-        redirectAttributes.addFlashAttribute("msg", "Новая карта успешно добавлена.");
-        return "redirect:/admin";
+        if (user2 != null) {
+            redirectAttributes.addFlashAttribute("msg", "Новая карта успешно добавлена.");
+        }
+        return "redirect:/addNewCard";
     }
 
     /*
@@ -121,15 +125,53 @@ public class AdminController extends BaseController {
     }
 
     @RequestMapping(value = "/changeSchedule", method = RequestMethod.GET)
-    public String renderScheduleChangingPage() {
+    public String renderScheduleChangingPage(ModelMap model) {
         Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!object.equals("anonymousUser")) {
             MyUserDetail user = (MyUserDetail) object;
             String role = user.getUserInfo().getRole();
-            if (role.equals("ROLE_USER")) {
+            if (role.equals("ROLE_ADMIN")) {
+                model.put("doctors", doctorService.findAll());
+                model.put("schedule", scheduleService.findAll());
                 return "changingSchedule";
             }
         }
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/addSchedule", method = RequestMethod.POST)
+    public String addSchedule(
+            @RequestParam(required = false) String date,
+            @RequestParam(required = false) String start,
+            @RequestParam(required = false) String finish,
+            @RequestParam(required = false) String room,
+            @RequestParam(required = false) Long doctorId,
+            RedirectAttributes redirectAttributes) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date day = new Date(dateFormat.parse(date).getTime());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Time startTime = new Time(timeFormat.parse(start).getTime());
+        Time finishTime = new Time(timeFormat.parse(finish).getTime());
+        Schedule schedule = new Schedule();
+        schedule.setDay(day);
+        schedule.setStart(startTime);
+        schedule.setFinish(finishTime);
+        schedule.setRoom(room);
+        schedule.setStatus(true);
+        schedule.setDoctor(doctorService.getDoctorById(doctorId));
+        Schedule schedule2 = scheduleService.addSchedule(schedule);
+
+        if (schedule2 != null) {
+            redirectAttributes.addFlashAttribute("msg", "Новая карта успешно добавлена.");
+        }
+        return "redirect:/changeSchedule";
+    }
+
+    @RequestMapping(value = "/deleteSchedule", method = RequestMethod.POST)
+    public String deleteSchedule(@RequestParam Long schId,
+                                 RedirectAttributes redirectAttributes) {
+        scheduleService.deleteSchedule(schId);
+        redirectAttributes.addFlashAttribute("msg", "Данные удалены.");
+        return "redirect:/changeSchedule";
     }
 }

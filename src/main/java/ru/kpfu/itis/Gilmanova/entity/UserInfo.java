@@ -1,6 +1,10 @@
 package ru.kpfu.itis.Gilmanova.entity;
 
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.SerializationException;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "login"))
-public class UserInfo {
+public class UserInfo implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -101,5 +105,6 @@ public class UserInfo {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
 }
 

@@ -20,4 +20,12 @@ public class ScheduleService {
     public List<Schedule> findAll() {
         return scheduleRepository.findAll();
     }
+
+    public Schedule addSchedule(Schedule schedule) {
+        return scheduleRepository.save(schedule);
+    }
+
+    public void deleteSchedule(Long schId) {
+        scheduleRepository.delete(schId);
+    }
 }

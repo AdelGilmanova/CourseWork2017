@@ -1,13 +1,14 @@
 package ru.kpfu.itis.Gilmanova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Adel on 28.04.2017.
  */
 @Entity
 @Table
-public class Service {
+public class Service implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,6 +1,7 @@
 package ru.kpfu.itis.Gilmanova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -9,7 +10,7 @@ import java.sql.Time;
  */
 @Entity
 @Table
-public class Schedule {
+public class Schedule implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
