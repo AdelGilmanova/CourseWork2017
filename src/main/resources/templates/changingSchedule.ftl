@@ -8,6 +8,7 @@
 <div class="allContent">
     <div class="card">
         <h3 class="page-header">Расписание</h3>
+        <p><a href="/admin">Личный кабинет</a></p>
 
         <form action="/addSchedule" method="post">
             <input type="text" name="date" id="datepicker" required placeholder="Дата">

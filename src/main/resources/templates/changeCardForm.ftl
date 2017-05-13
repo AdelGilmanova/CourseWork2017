@@ -16,6 +16,7 @@
 <div class="allContent">
     <div class="section">
         <h2 class="page-header">Карта пациента</h2>
+        <p><a href="/doctor">Личный кабинет</a></p>
         <p>Номер карты: ${(patient.getCard_number())!}</p>
         <p>Пациент: ${(patient.getUserInfo().getLastName())!} ${(patient.getUserInfo().getFirstName())!} ${(patient.getUserInfo().getSecondName())!}</p>
         <p>Лечащий врач: ${(user.getLastName())!} ${(user.getFirstName())!} ${(user.getSecondName())!}</p>

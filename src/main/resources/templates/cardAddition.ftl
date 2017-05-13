@@ -6,6 +6,7 @@
 
     <div class="section">
         <h2 class="page-header">Новая карта пациента</h2>
+        <p><a href="/admin">Личный кабинет</a></p>
         <p style="color: green">${(msg)!}</p>
         <form action="/addUser" method="post">
             <div class="form-group">

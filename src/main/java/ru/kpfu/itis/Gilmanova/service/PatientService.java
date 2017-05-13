@@ -36,4 +36,8 @@ public class PatientService {
             return "no";
         }
     }
+
+    public Patient getPatientByPatientId(Long patientId) {
+        return patientRepository.getPatientByPatientId(patientId);
+    }
 }

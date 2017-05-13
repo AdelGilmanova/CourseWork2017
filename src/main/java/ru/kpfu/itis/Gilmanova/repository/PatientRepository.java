@@ -16,6 +16,9 @@ public interface PatientRepository extends CrudRepository<Patient, Long> {
     @Query("select p from Patient p where p.userInfo.id =:userId")
     Patient getPatientByUserId(@Param("userId") Long userId);
 
+    @Query("select p from Patient p where p.id =:patientId")
+    Patient getPatientByPatientId(@Param("patientId") Long patientId);
+
     @Query("select p.id from Patient p where p.card_number =:number")
     Long getUserIdByNumberId(@Param("number") Integer number);
 

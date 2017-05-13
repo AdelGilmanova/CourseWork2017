@@ -2,6 +2,7 @@ package ru.kpfu.itis.Gilmanova.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,13 @@ import java.text.SimpleDateFormat;
  */
 @Controller
 public class AdminController extends BaseController {
+    private static final String ADMIN_PAGE_MAPPING = "/admin";
+    private static final String NEW_CARD_ADDITION_PAGE_MAPPING = "/addNewCard";
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @RequestMapping(value = ADMIN_PAGE_MAPPING, method = RequestMethod.GET)
     public String renderAdminPage() {
         Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!object.equals("anonymousUser")) {
@@ -36,7 +42,7 @@ public class AdminController extends BaseController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/addNewCard", method = RequestMethod.GET)
+    @RequestMapping(value = NEW_CARD_ADDITION_PAGE_MAPPING, method = RequestMethod.GET)
     public String renderCardAdditionPage() {
         Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!object.equals("anonymousUser")) {
@@ -74,7 +80,7 @@ public class AdminController extends BaseController {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setSecondName(secondName);
-        user.setHashPass(pass);
+        user.setHashPass(passwordEncoder.encode(pass));
         user.setLogin(login);
         user.setRole("ROLE_USER");
         user.setEnabled(true);
