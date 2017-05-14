@@ -32,10 +32,6 @@ public class Doctor implements Serializable {
     @JoinColumn(name = "user_id")
     private UserInfo userInfo;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
     @OneToMany(cascade = CascadeType.REFRESH,
             fetch = FetchType.LAZY,
             mappedBy = "doctor")
@@ -87,14 +83,6 @@ public class Doctor implements Serializable {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public String getGender() {

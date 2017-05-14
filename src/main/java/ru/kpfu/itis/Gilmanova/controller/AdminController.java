@@ -168,7 +168,7 @@ public class AdminController extends BaseController {
         Schedule schedule2 = scheduleService.addSchedule(schedule);
 
         if (schedule2 != null) {
-            redirectAttributes.addFlashAttribute("msg", "Новая карта успешно добавлена.");
+            redirectAttributes.addFlashAttribute("msg", "Новое поле успешно добавлено.");
         }
         return "redirect:/changeSchedule";
     }
