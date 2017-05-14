@@ -18,18 +18,5 @@ import java.io.IOException;
 @Configuration
 @EnableRedisHttpSession
 public class RedisHttpSessionConfig {
-    private static RedisServer redisServer;
-
-//    @Bean
-//    public JedisConnectionFactory connectionFactory() throws IOException {
-//        redisServer = new RedisServer(Protocol.DEFAULT_PORT);
-//        redisServer.start();
-//        return new JedisConnectionFactory();
-//    }
-//
-//    @PreDestroy
-//    public void destroy() {
-//        redisServer.stop();
-//    }
 
 }
